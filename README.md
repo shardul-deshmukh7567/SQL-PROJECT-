@@ -157,4 +157,99 @@ select * from transactions ;
 
 rename table transactions to payments;
 show tables ;
+
+
+## queries realted to this 
+
+## 1) display the barista of coffee shop 
+select * from workers 
+where post ='barista';
+
+## 2) find a clients  who have premium membership 
+select * from clients 
+where membership = 'premium';
+
+## 3) retrieve all the clients name ,city ,email ,phone 
+select clients.customer_name,city,email,phone from clients ;
+
+## 4) retrieve the information of clients who lives in pune
+select * from clients 
+where city = 'pune';
+
+## 5)  retrieve the product information coffee 
+select * from product 
+where product_category = 'coffee';
+
+## 6) display the information of all shops 
+
+select * from shop1;
+
+## 7) display the information of shop having id 1 
+select * from shop1 
+where shop_id = '1';
+
+## 8) Find all clients with pending bills
+SELECT customer_Name, Phone, Email
+FROM clients
+WHERE bill_status = 'Pending';
+
+## 9) List all products with a cost above 99
+SELECT product_id, product_type, product_cost
+FROM product
+WHERE product_cost > 99;
+
+## 10) Retrieve all shops located in a specific city
+SELECT shop_name, shop_address
+FROM shop1
+WHERE city = 'chh sambhajinagar';
+
+## 11) List all products under a specific category
+SELECT product_id, product_type, product_cost
+FROM product
+WHERE product_category = 'hot chocolate';
+
+## 12) Combine all products with all shops.
+SELECT product.product_id, product.product_type, shop1.shop_name, shop1.city
+FROM product JOIN shop1;
+
+## 13)Retrieve workers earning above the average salary.
+SELECT worker_name, Salary
+FROM workers WHERE Salary > (SELECT AVG(Salary) FROM workers);
+
+## 14)Find  the Minimum and Maximum Product Costs
+SELECT MIN(product_cost) AS min_cost, MAX(product_cost) AS max_cost
+FROM product;
+
+## 15) Find the Lowest and Highest Salaries:
+SELECT MIN(Salary) AS min_salary, MAX(Salary) AS max_salary
+FROM workers;
+
+## 16) Find  Minimum and Maximum Product Costs by Category
+SELECT product_category, MIN(product_cost) AS min_cost, MAX(product_cost) AS max_cost
+FROM product GROUP BY product_category;
+
+## 17) Find the  Minimum and Maximum Salaries by Position
+SELECT post, MIN(Salary) AS min_salary, MAX(Salary) AS max_salary
+FROM workers GROUP BY post;
+
+## 18) List the customers along with the city they belong to and their bill status
+SELECT customer_Name, city, bill_status FROM clients;
+
+## 19) Show the total number of products in each category.
+SELECT product_category, COUNT(*) AS total_products
+FROM product GROUP BY product_category;
+
+## 20) Count the total number of workers in each post.
+SELECT post, COUNT(*) AS total_workers FROM workers GROUP BY post;
+
+## 21) Get the total cost of all products in the store
+SELECT SUM(product_cost) AS total_product_cost FROM product;
+
+## 22) Display all cities where clients and shops exist
+SELECT city FROM clients
+UNION
+SELECT city FROM shop1;
+
+## 23) Show the list of workers who have a salary greater than 30000
+SELECT worker_name, Salary FROM workers WHERE Salary > 30000;
    
